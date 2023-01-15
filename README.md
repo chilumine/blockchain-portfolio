@@ -8,7 +8,7 @@
 - [Attack techniques](#attack-techniques)
   - [Integer Overflow / Underflow](#integer-overflow--underflow)
   - [Re-entrancy attacks](#re-entrancy-attacks)
-
+  - [Unchecked Return Values For Low Level Calls](#unchecked-return-values-for-low-level-calls)
 
 
 ## Introduction
@@ -213,3 +213,28 @@ Implement Checks Effects Interactions Pattern: A secure code-writing pattern tha
 #### Resource
 
 - [A Historical Collection of Reentrancy Attacks](https://github.com/pcaversaccio/reentrancy-attacks)
+
+
+### <ins>Unchecked Return Values For Low Level Calls</ins>
+
+The low level functions are one of Solidity's deeper features. They behave significantly differently from other Solidity functions in terms of handling mistakes, since they do not propagate and do not result in a complete reversal of the present execution. Such low-level calls' return values should always be verified, failing to do so might result in fail-opens and other undesirable results.
+
+These functions are: `call()`, `callcode()`, `delegatecall()` and `send()`.
+
+An example from [DAPS - TOP 10](https://dasp.co/#item-4):
+1. A smart contract saves in a variable how much ether is left, for example `etherLeft`;
+2. A call is used to send ether to a contract that does not have a `payable` function;
+3. The EVM sets the return value to `false`;
+4. The return's value is not checked by the contract and the variable `etherLeft` is not updated.
+
+```Solidity
+function withdraw(uint256 _amount) public {
+	require(balances[msg.sender] >= _amount);
+	balances[msg.sender] -= _amount;
+	etherLeft -= _amount;
+	msg.sender.send(_amount);
+}
+```
+
+Real world scenario
+- [King of Ether | Post-Mortem Investigation (Feb 2016)](https://www.kingoftheether.com/postmortem.html)
