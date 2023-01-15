@@ -1,5 +1,7 @@
 # blockchain-portfolio
 
+A portfolio of my blockchain development work including smart contracts, NodeJS code and security notes
+
 ## Index
 - [Introduction](#introduction)
 - [Resources](#resources)
