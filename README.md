@@ -6,6 +6,7 @@
 - [Tools](#tools)
 - [Code](#code)
 - [Attack techniques](#attack-techniques)
+  - [Vulnerabilities | Web3 Security Library](https://github.com/immunefi-team/Web3-Security-Library/tree/main/Vulnerabilities)
   - [Integer Overflow / Underflow](#integer-overflow--underflow)
   - [Re-entrancy attacks](#re-entrancy-attacks)
   - [Unchecked Return Values For Low Level Calls](#unchecked-return-values-for-low-level-calls)
