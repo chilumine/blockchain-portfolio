@@ -2,6 +2,8 @@
 
 pragma solidity 0.8.17;
 
+error Unauthorized();
+
 contract Owned {
 	
 	address public owner; // owner address
@@ -60,7 +62,7 @@ contract Lottery is Mortal {
 
 	// it returns the winner a given lotteryID
 	function getWinnerByLottery(uint _lotteryID) public view returns (address payable){
-		return winnersHistory[_lotteryId];
+		return winnersHistory[_lotteryID];
 	}
 
 	// in the context of a function, the address is the one that called that function
