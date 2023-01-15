@@ -4,6 +4,9 @@
 - [Resources](#resources)
 - [Tools](#tools)
 - [Code](#code)
+- [Attack techniques](#attack-techniques)
+  - [Integer Overflow / Underflow](#integer-overflow--underflow)
+  - [Re-entrancy attacks](#re-entrancy-attacks)
 
 
 
@@ -89,3 +92,59 @@
 - [Smart Contract Security](https://ethereum.org/en/developers/docs/smart-contracts/security/)
 - [Ethereum Smart Contract Security Best Practices](https://consensys.github.io/smart-contract-best-practices/)
 - [Ethereum VM (EVM) Opcodes and Instruction Reference](https://github.com/crytic/evm-opcodes)
+
+
+
+## Attack techniques
+
+### <ins>Integer Overflow / Underflow</ins>
+
+**Integer Overflow** happens because the arithmetic value of the operation exceeds the maximum size of the variable value type. An example: the variable `amount` is `uint256`. It supports numeric values from 0 to 2<sup>256</sup>. This means that a value like `0x8000000000000000000000000000000000000000000000000000000000000000` corresponding to the decimal value `57896044618658097711785492504343953926634992332820282019728792003956564819968` received in the input for the variable `amount` would trigger a Integer Overflow since it exceeds the maximum value supported.
+
+An example: [Beauty Chain exploit](https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f). An input like `["<ADDR_1>","<ADDR_2>"], 0x8000000000000000000000000000000000000000000000000000000000000000` for the function `batchTransfer` would trigger this vulnerability.
+
+**Integer Underflow** happens in the exact opposite of the overflow error. It error occurs when you go below the minimum amount. This triggers the system to bring you right back up to maximum value instead of reverting to zero. For example, injecting the value `-1` in a `uint256` variable that stores the value `0` will result in the number 255.
+
+#### Remediation
+
+To fix this vulnerability, and other integer overflows and underflows, the smart contract can import and use the [SafeMath library by OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts).
+
+```solidity
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+```
+
+**Note**: Since version `0.8.0` Solidity automatically reverts on integer overflow and underflow instead of circling the value back to zero.
+
+
+### <ins>Re-entrancy attacks</ins>
+
+A Reentrancy vulnerability is a type of attack to drain the bit-by-bit liquidity of a contract with an insecure code-writing pattern.
+
+An incorrect flow looks like this:
+- It verifies that the user has a sufficient balance to execute the transaction
+- Sends the funds to the user
+- If the operation is successful, the contract updates the user's balance
+
+The problem arises when a contract invokes this operation instead of a user. This can create code that generates a loop, which means that an attacker can invoke the withdrawal function many times because it is the same balance that is checked as the initial value.
+
+An example of a vulnerable function
+```Solidity
+function withdraw(uint withdrawAmount) public returns (uint) {
+		require(withdrawAmount <= balances[msg.sender]);
+		msg.sender.call.value(withdrawAmount)("");
+		balances[msg.sender] -= withdrawAmount;
+		return balances[msg.sender];
+}
+```
+
+#### Remediation
+
+Implement Checks Effects Interactions Pattern: A secure code-writing pattern that prevents an attacker from creating loops that allow him to re-enter the contract multiple times without blocking.
+
+- Verify that the requirements are met before continuing the execution;
+- Update balances and make changes before interacting with an external actor;
+- Finally, after the transaction has been validated and the changes have been made, interactions with the external entity are allowed.
+
+#### Resource
+
+- [A Historical Collection of Reentrancy Attacks](https://github.com/pcaversaccio/reentrancy-attacks)
