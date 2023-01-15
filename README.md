@@ -1,6 +1,6 @@
 # blockchain-portfolio
 
-### <ins>Index</ins>
+## Index
 - [Introduction](#introduction)
 - [Resources](#resources)
 - [Tools](#tools)
