@@ -114,6 +114,7 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 - [Remix](https://remix-project.org/)
 - [Truffle Suite](https://trufflesuite.com/docs/)
   - [Ganache](https://github.com/trufflesuite/ganache)
+- [Foundry](https://book.getfoundry.sh/)
 
 **Libraries**
 - [web3.js](https://web3js.readthedocs.io/)
