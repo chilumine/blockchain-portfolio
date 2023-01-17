@@ -84,9 +84,11 @@ contract Lottery is Mortal {
 
 		uint index = getRandomNumber() % players.length;
 		emit Transfer(players[index], address(this).balance);
-		players[index].transfer(address(this).balance);
 
-		lotteryID++;
+		(bool success, ) = payable(players[index]).call {value: address(this).balance}("win");
+		require(success, "Transaction failed");
+
+		++lotteryID;
 
 		winnersHistory[lotteryID-1] = players[index];
 		
