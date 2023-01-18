@@ -38,7 +38,7 @@ contract Attacker {
 		lottery.guessRandomNumber(answer);
 
 		(bool success, ) = payable(msg.sender).call {value: address(this).balance}("");
-    	require(success, "Transaction failed");
+		require(success, "Transaction failed");
 
 	}
 
