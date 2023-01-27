@@ -83,7 +83,7 @@ contract SolidityToken is Mortal {
 	}
 
 	function _transfer(address from, address to, uint256 amount) internal {
-		//require(to != address(0));
+		// require(to != address(0));
 		assembly {
 			if iszero(and(to, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
 				revert(0, 0)
@@ -102,8 +102,8 @@ contract SolidityToken is Mortal {
 	}
 
 	function _approve(address owner, address spender, uint256 amount) internal {
-		//require(owner != address(0));
-		//require(spender != address(0));
+		// require(owner != address(0));
+		// require(spender != address(0));
 		assembly {
 			if iszero(and(owner, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
 				revert(0, 0)
