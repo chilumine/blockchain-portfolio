@@ -139,7 +139,6 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 **Vulnerability scanners & others**
 - [Slither](https://github.com/crytic/slither)
 - [MythX](https://mythx.io/)
-- [C4udit](https://github.com/byterocket/c4udit)
 - [Solidity Function Profiler](https://github.com/EricR/sol-function-profiler)
 - [ERC20 Verifier](https://erc20-verifier.openzeppelin.com/)
 - [EVM Codes](https://www.evm.codes/)
