@@ -92,14 +92,8 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 
 **Updates / News**
 - [rekt.news](https://rekt.news/)
-- [DeFi Hacks Analysis - Root Cause](https://wooded-meter-1d8.notion.site/0e85e02c5ed34df3855ea9f3ca40f53b?v=22e5e2c506ef4caeb40b4f78e23517ee)
 - [Blockchain Threat Intelligence](https://newsletter.blockthreat.io/)
-
-**Blogs**
-- [Immunefi's blog](https://immunefi.medium.com/)
-- [OpenZeppelin's blog](https://blog.openzeppelin.com/)
-- [Halborn's blog](https://halborn.com/blog/)
-- [PWNING](https://pwning.mirror.xyz/)
+- [DeFi Hacks Analysis - Root Cause](https://wooded-meter-1d8.notion.site/0e85e02c5ed34df3855ea9f3ca40f53b?v=22e5e2c506ef4caeb40b4f78e23517ee)
 
 
 
