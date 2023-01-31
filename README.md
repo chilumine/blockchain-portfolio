@@ -89,7 +89,6 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 **Vulnerabilities**
 - [SWC Registry](https://swcregistry.io/)
 - [All known smart contract-side and user-side attacks and vulnerabilities in Web3.0, DeFi, NFT and Metaverse + Bonus](https://telegra.ph/All-known-smart-contract-side-and-user-side-attacks-and-vulnerabilities-in-Web30--DeFi-03-31)
-- [c4-common-issues](https://github.com/byterocket/c4-common-issues)
 
 **Updates / News**
 - [rekt.news](https://rekt.news/)
