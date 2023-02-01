@@ -12,7 +12,6 @@ A portfolio of my blockchain development and security work including smart contr
   - [Integer Overflow / Underflow](#integer-overflow--underflow)
   - [Re-entrancy attacks](#re-entrancy-attacks)
   - [Unchecked Return Values For Low Level Calls](#unchecked-return-values-for-low-level-calls)
-- [General notes](#general-notes)
 
 
 ## Introduction
@@ -240,9 +239,3 @@ function withdraw(uint256 _amount) public {
 
 Real world scenario
 - [King of Ether | Post-Mortem Investigation (Feb 2016)](https://www.kingoftheether.com/postmortem.html)
-
-
-## General notes
-
-- Since solidity `0.5.9`, the version of solidity used to compile a contract is hidden near the the end of the bytecode. [[Reference](https://twitter.com/danielvf/status/1618330824814006272)]. An example:
-  `608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506101d7806100606000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806341c0e1b51461003b5780638da5cb5b14610045575b600080fd5b610043610063565b005b61004d610121565b60405161005a9190610186565b60405180910390f35b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146100e8576040517f82b4290000000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b600061017082610145565b9050919050565b61018081610165565b82525050565b600060208201905061019b6000830184610177565b9291505056fea26469706673582212202f563615efbc12b6a448e193ce9add038d4c24f4451a919f9320a4e431eeb7c564736f6c634300080a0033` => `00080a` => `00` `08` `0a` => `0.8.10`
