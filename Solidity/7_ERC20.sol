@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.17;
+pragma solidity 0.8.7;
 
 error Unauthorized();
 
@@ -77,8 +77,8 @@ contract SolidityToken is Mortal {
 		return true;
 	}
 
-	function transferFrom(address from, address to, uint256 amount) public returns(bool success){
-		_transferFrom(from, to, amount);
+	function transferFrom(address to, uint256 amount) public returns(bool success){
+		_transferFrom(msg.sender, to, amount);
 		return true;
 	}
 
@@ -98,7 +98,7 @@ contract SolidityToken is Mortal {
 		balanceOf[to] += amount;
 		emit Transfer(from, to, amount);
 		
-		assert(balanceOf[from] + balanceOf[to] == previousBalances);
+		require(balanceOf[from] + balanceOf[to] == previousBalances);
 	}
 
 	function _approve(address owner, address spender, uint256 amount) internal {
