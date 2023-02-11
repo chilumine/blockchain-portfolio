@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.17;
+pragma solidity 0.8.7;
 
 error Unauthorized();
 
@@ -99,7 +99,7 @@ contract Lottery is Mortal {
 
 	// get a random number using the timestamp
 	function getRandomNumber() internal view returns (uint){
-		return uint(keccak256(abi.encodePacked(owner, block.timestamp)));
+		return uint(keccak256(abi.encode(owner, block.timestamp)));
 	}
 
 }
