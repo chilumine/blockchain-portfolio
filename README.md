@@ -105,6 +105,7 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 **Development Environment**
 - [Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor)
 - [Remix](https://remix-project.org/)
+  - [remixd](https://github.com/ethereum/remix-project/tree/master/libs/remixd)
 - [Truffle Suite](https://trufflesuite.com/docs/)
   - [Ganache](https://github.com/trufflesuite/ganache)
 - [Foundry](https://book.getfoundry.sh/)
