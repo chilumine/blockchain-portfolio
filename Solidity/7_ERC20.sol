@@ -67,8 +67,8 @@ contract SolidityToken is Mortal {
 		return totalSupply;
 	}
 	
-	function transfer(address to, uint256 amount) public returns (bool success) {
-		_transfer(msg.sender, to, amount);
+	function transfer(address from, address to, uint256 amount) public returns (bool success) {
+		_transfer(from, to, amount);
 		return true;
 	}
 
