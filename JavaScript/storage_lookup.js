@@ -7,7 +7,7 @@ async function lookup(){
 
     // eth_getStorageAt
     // https://eips.ethereum.org/EIPS/eip-1967 ERC-1967: Proxy Storage Slots
-	// https://docs.alchemy.com/docs/smart-contract-storage-layout
+    // https://docs.alchemy.com/docs/smart-contract-storage-layout
 
     /* Example for uint256 (see smart contract 1 below) */
     value = await hre.ethers.provider.getStorageAt(addr, '0x2');
