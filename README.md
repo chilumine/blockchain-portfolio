@@ -146,7 +146,7 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 - [7_ERC20.sol](Solidity/7_ERC20.sol) smart contract for an ERC20 token (see: [EIP-20: Token Standard](https://eips.ethereum.org/EIPS/eip-20) and [openzeppelin-contracts/ERC20.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.8.0/contracts/token/ERC20/ERC20.sol))
 - [8_Telephone-attacker.sol](Solidity/8_Telephone-attacker.sol) to solve the [4. Telephone challenge](https://ethernaut.openzeppelin.com/level/4) from Ethernaut
 - [9_BadRandomness.sol](Solidity/9_BadRandomness.sol) an example of Bad Randomness. See more about this issue here: [Bad Randomness | DASP TOP 10](https://dasp.co/#item-6)
-- [11_MultiSig.sol](Solidity/11_MultiSig.sol) an example of Smart Contract for Multiple Signature
+- [11_MultiSig.sol](Solidity/11_MultiSig.sol) an example of Smart Contract for Multiple Signatures
 
 
 
