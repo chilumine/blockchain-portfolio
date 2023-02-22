@@ -154,6 +154,7 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 - [digitalSignatures.js](JavaScript/digitalSignatures.js) is a simulation of public key cryptography
 - [blockchain.js](JavaScript/blockchain.js) is a simple Proof of Work blockchain simulation
 - [blockchain-explorer.html](JavaScript/blockchain-explorer.html) a simple Ethereum Blockchain Explorer, built using [Ethers](https://docs.ethers.org/) and [Infura](https://www.infura.io/)
+- [storage_lookup.js](JavaScript/storage_lookup.js) notes about storage slots
 
 **Resources**
 
