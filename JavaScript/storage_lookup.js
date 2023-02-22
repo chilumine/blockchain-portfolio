@@ -11,6 +11,7 @@ async function lookup(){
 
     /* Example for uint256 (see smart contract 1 below) */
     value = await hre.ethers.provider.getStorageAt(addr, '0x2');
+    console.log("\nValue: " + parseInt(value));
     
     /* Example for mapping (see smart contract 1 below) */
     key = hexZeroPad(21, 32); // key value is 21, 32 is to pad the key value in 32 bytes (needed for Solidity)
@@ -18,12 +19,11 @@ async function lookup(){
     slot = keccak256(key + baseSlot);
     console.log({key, baseSlot, slot});
     value = await hre.ethers.provider.getStorageAt(addr, slot);
+    console.log("\nValue: " + parseInt(value));
     
     /* For arbitrary slot (see smart contract 2 below) */
     slot = keccak256(toUtf8Bytes('test'));
     value = await hre.ethers.provider.getStorageAt(addr, slot);
-
-    /* Print the result (general) */
     console.log("\nValue: " + parseInt(value));
 
     /* For arbitrary slot, using function check() (see smart contract 2 below) */
