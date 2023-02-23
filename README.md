@@ -147,6 +147,7 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 - [8_Telephone-attacker.sol](Solidity/8_Telephone-attacker.sol) to solve the [4. Telephone challenge](https://ethernaut.openzeppelin.com/level/4) from Ethernaut
 - [9_BadRandomness.sol](Solidity/9_BadRandomness.sol) an example of Bad Randomness. See more about this issue here: [Bad Randomness | DASP TOP 10](https://dasp.co/#item-6)
 - [11_MultiSig.sol](Solidity/11_MultiSig.sol) an example of Smart Contract for Multiple Signatures
+- [12_Storages.sol](Solidity/12_Storages.sol) exercises on storage slots. Test with [storage_lookup.js](JavaScript/storage_lookup.js).
 - [13_Proxy.sol](Solidity/13_Proxy.sol) an exercise on proxies. Test with [proxy_tests.js](JavaScript/proxy_tests.js).
 
 
@@ -154,7 +155,6 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
 - [digitalSignatures.js](JavaScript/digitalSignatures.js) is a simulation of public key cryptography
 - [blockchain.js](JavaScript/blockchain.js) is a simple Proof of Work blockchain simulation
 - [blockchain-explorer.html](JavaScript/blockchain-explorer.html) a simple Ethereum Blockchain Explorer, built using [Ethers](https://docs.ethers.org/) and [Infura](https://www.infura.io/)
-- [storage_lookup.js](JavaScript/storage_lookup.js) notes about storage slots
 
 **Resources**
 
