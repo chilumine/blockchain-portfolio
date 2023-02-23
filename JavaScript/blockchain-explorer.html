@@ -65,11 +65,11 @@
 			ethersProvider.getBlock('latest').then(answer => console.log('Latest block:',answer));
 
 			ethersProvider.getBlockNumber().then(blockNum => {
-			  for (let i = 0; i < 10; i++) {
-				ethersProvider.getBlock(blockNum - i).then(result => {
-				  $('tbody').append("<tr scope=\"row\"><td>" + result.number + "</td><td>" + result.miner + "</td><td>" + result.hash + "</td><td>" + result.timestamp + "</td></tr>");
-				});
-			  }
+				for (let i = 0; i < 10; i++) {
+					ethersProvider.getBlock(blockNum - i).then(result => {
+						$('tbody').append("<tr scope=\"row\"><td>" + result.number + "</td><td>" + result.miner + "</td><td>" + result.hash + "</td><td>" + result.timestamp + "</td></tr>");
+					});
+				}
 			});
 		</script>
 	</body>
