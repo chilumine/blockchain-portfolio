@@ -108,6 +108,9 @@ You can find more here: [ethereum.org/en/glossary/](https://ethereum.org/en/glos
   - [remixd](https://github.com/ethereum/remix-project/tree/master/libs/remixd)
 - [Truffle Suite](https://trufflesuite.com/docs/)
   - [Ganache](https://github.com/trufflesuite/ganache)
+- [Hardhat](https://hardhat.org/)
+  - [Configuration | Hardhat](https://hardhat.org/hardhat-runner/docs/config)
+  - [deploy.js](JavaScript/deploy.js)
 - [Foundry](https://book.getfoundry.sh/)
 
 **Libraries**
