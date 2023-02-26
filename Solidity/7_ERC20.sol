@@ -1,6 +1,6 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 
-pragma solidity 0.8.7;
+pragma solidity 0.8.10;
 
 error Unauthorized();
 
@@ -67,8 +67,8 @@ contract SolidityToken is Mortal {
 		return totalSupply;
 	}
 	
-	function transfer(address from, address to, uint256 amount) public returns (bool success) {
-		_transfer(from, to, amount);
+	function transfer(address to, uint256 amount) public returns (bool success) {
+		_transfer(msg.sender, to, amount);
 		return true;
 	}
 
