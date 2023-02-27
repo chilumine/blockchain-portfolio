@@ -28,100 +28,104 @@ contract Mortal is Owned {
 
 contract SolidityToken is Mortal {
 
-	string private constant name = "SolidityToken";
-	string private constant symbol = "STK";
+	string private constant _name = "SolidityToken";
+	string private constant _symbol = "STK";
 
-	uint8 private constant decimals = 18;
+	uint8 private constant _decimals = 18;
 
-	uint256 private constant initialSupply = 10000;
-	uint256 totalSupply;
+	uint256 private constant _initialSupply = 10000;
+	uint256 _totalSupply;
 
-	mapping(address => uint256) private balanceOf;
-	mapping(address => mapping(address => uint256)) private allowance;
+	mapping(address => uint256) private _balanceOf;
+	mapping(address => mapping(address => uint256)) private _allowance;
 
-	event Transfer(address indexed from, address indexed to, uint256 amount);
-	event Approval(address indexed owner, address indexed spender, uint256 amount);
+	event Transfer(address indexed from, address indexed to, uint256 _value);
+	event Approval(address indexed owner, address indexed spender, uint256 _value);
 
 	constructor() {
-		totalSupply = initialSupply * 10**uint256(decimals);
-		balanceOf[owner] = totalSupply;
+		_totalSupply = _initialSupply * 10**uint256(_decimals);
+		_balanceOf[owner] = _totalSupply;
 	}
 
-	function tokenName() public pure returns (string memory){
-		return name;
+	function name() public pure returns (string memory){
+		return _name;
 	}
 
-	function tokenSymbol() public pure returns (string memory){
-		return symbol;
+	function symbol() public pure returns (string memory){
+		return _symbol;
 	}
 
-	function tokenDecimals() public pure returns (uint8){
-		return decimals;
+	function decimals() public pure returns (uint8){
+		return _decimals;
 	}
 
-	function tokenBalanceOf(address userAddr) public view returns (uint256){
-		return balanceOf[userAddr];
+	function balanceOf(address _owner) public view returns (uint256){
+		return _balanceOf[_owner];
 	}
 
-	function tokenTotalSupply() public view returns (uint256){
-		return totalSupply;
+	function totalSupply() public view returns (uint256){
+		return _totalSupply;
 	}
 	
-	function transfer(address to, uint256 amount) public returns (bool success) {
-		_transfer(msg.sender, to, amount);
+	function transfer(address _to, uint256 _value) public returns (bool success) {
+		_transfer(msg.sender, _to, _value);
 		return true;
 	}
 
-	function approve(address spender, uint256 amount) public returns (bool success) {
-		_approve(msg.sender, spender, amount);		
+	function transferFrom(address _to, uint256 _value) public returns(bool success){
+		_transferFrom(msg.sender, _to, _value);
 		return true;
 	}
 
-	function transferFrom(address to, uint256 amount) public returns(bool success){
-		_transferFrom(msg.sender, to, amount);
+	function approve(address _spender, uint256 _value) public returns (bool success) {
+		_approve(msg.sender, _spender, _value);		
 		return true;
 	}
 
-	function _transfer(address from, address to, uint256 amount) internal {
+	function allowance(address _owner, address _spender) public view returns (uint256 remaining){
+		return _allowance[_owner][_spender];
+	}
+
+	function _transfer(address _from, address _to, uint256 _value) internal {
 		// require(to != address(0));
 		assembly {
-			if iszero(and(to, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
+			if iszero(and(_to, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
 				revert(0, 0)
 			}
 		}
 
-		require(balanceOf[from] >= amount);
-		require(balanceOf[to] + amount >= balanceOf[to]);
+		require(_balanceOf[_from] >= _value);
+		require(_balanceOf[_to] + _value >= _balanceOf[_to]);
 		
-		uint256 previousBalances = balanceOf[from] + balanceOf[to];
-		balanceOf[from] -= amount;
-		balanceOf[to] += amount;
-		emit Transfer(from, to, amount);
+		uint256 previousBalances = _balanceOf[_from] + _balanceOf[_to];
+		_balanceOf[_from] -= _value;
+		_balanceOf[_to] += _value;
+		emit Transfer(_from, _to, _value);
 		
-		require(balanceOf[from] + balanceOf[to] == previousBalances);
+		require(_balanceOf[_from] + _balanceOf[_to] == previousBalances);
 	}
 
-	function _approve(address owner, address spender, uint256 amount) internal {
+	function _approve(address _owner, address _spender, uint256 _value) internal {
 		// require(owner != address(0));
 		// require(spender != address(0));
 		assembly {
-			if iszero(and(owner, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
+			if iszero(and(_owner, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
 				revert(0, 0)
 			}
-			if iszero(and(spender, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
+			if iszero(and(_spender, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)){
 				revert(0, 0)
 			}
 		}
 
-		allowance[owner][spender] = amount;
+		_allowance[_owner][_spender] = _value;
 
-		emit Approval(msg.sender, spender, amount);
+		emit Approval(msg.sender, _spender, _value);
 	}
 
-	function _transferFrom(address from, address to, uint256 amount) internal {
-		require(allowance[from][msg.sender] >= amount);
-		allowance[from][msg.sender] -= amount;
-		_transfer(from, to, amount);
+	function _transferFrom(address _from, address _to, uint256 _value) internal {
+		require(_allowance[_from][msg.sender] >= _value);
+		_allowance[_from][msg.sender] -= _value;
+		_transfer(_from, _to, _value);
 	}
 
 }
